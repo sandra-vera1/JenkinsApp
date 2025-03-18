@@ -18,7 +18,7 @@ function App() {
           Learn React
         </a>
       </header>*/}
-      <h1>This is my first react app by Sandra for CICD</h1>
+      <h1>This is my first react app by Sandra for Enterprise Computing</h1>
     </div>
   );
 }
