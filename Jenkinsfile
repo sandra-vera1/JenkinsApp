@@ -58,6 +58,9 @@ pipeline {
             }
             
             steps {
+                withCredentials([usernamePassword(credentialsId: 'my-aws-jenkins', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
+    // some block
+}
                 sh '''
                    # npm install netlify-cli
                    # node_modules/.bin/netlify --version
@@ -72,6 +75,7 @@ pipeline {
                   # netlify deploy --prod --dir=build
 
                   aws --version
+                  aws s3 ls
                 '''
             }
         }
