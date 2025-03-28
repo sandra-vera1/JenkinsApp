@@ -61,9 +61,8 @@ pipeline {
                 AWS_S3_BUCKET = 'temp-20250320'
             }
             steps {
-                withCredentials([usernamePassword(credentialsId: 'my-aws-jenkins', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
+                withCredentials([usernamePassword(credentialsId: 'my-temp', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
     
-}
                 sh '''
                    # npm install netlify-cli
                    # node_modules/.bin/netlify --version
@@ -84,6 +83,7 @@ pipeline {
                 #  aws s3 sync build s3://$AWS_S3_BUCKET
                 '''
             }
+          }
         }
-    }
+    } 
 }
