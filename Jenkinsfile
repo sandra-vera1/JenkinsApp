@@ -10,7 +10,7 @@ pipeline {
            steps{
              sh 'docker build -t my-docker-image .'
            }
-        }*/
+        }
         stage('Build') {
             agent {
                 docker { 
@@ -46,8 +46,8 @@ pipeline {
                 '''
             }
         }
-
-       /* stage('Deploy') {
+        */
+        stage('Deploy') {
             agent {
                 docker { 
                     //image 'node:22.14.0-alpine' 
@@ -62,7 +62,7 @@ pipeline {
             }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'my-aws-jenkins', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
-    // some block
+    
 }
                 sh '''
                    # npm install netlify-cli
@@ -79,11 +79,11 @@ pipeline {
 
                   aws --version
                   aws s3 ls
-                  echo "Hello S3!" > index.html
-                  aws s3 cp index.html s3://svmy-new-jenkins-20250320/index.html
-                  aws s3 sync build s3://$AWS_S3_BUCKET
+                #   echo "Hello S3!" > index.html
+                #  aws s3 cp index.html s3://svmy-new-jenkins-20250320/index.html
+                #  aws s3 sync build s3://$AWS_S3_BUCKET
                 '''
             }
-        }*/
+        }
     }
 }
