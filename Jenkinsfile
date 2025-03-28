@@ -78,8 +78,8 @@ pipeline {
 
                   aws --version
                   aws s3 ls
-                #   echo "Hello S3!" > index.html
-                #  aws s3 cp index.html s3://svmy-new-jenkins-20250320/index.html
+                  echo "Hello S3!" > index.html
+                  aws s3 cp index.html s3://svmy-new-jenkins-20250320/index.html
                 #  aws s3 sync build s3://$AWS_S3_BUCKET
                 '''
             }
