@@ -18,7 +18,7 @@ function App() {
           Learn React
         </a>
       </header>*/}
-      <h1>This is my first react app by Sandra for Enterprise Computing</h1>
+      <h1>Practice 10 This is my Jenkins App for AWS-S3 by Sandra</h1>
     </div>
   );
 }

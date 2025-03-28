@@ -10,7 +10,7 @@ pipeline {
            steps{
              sh 'docker build -t my-docker-image .'
            }
-        }
+        }*/
         stage('Build') {
             agent {
                 docker { 
@@ -25,6 +25,7 @@ pipeline {
                     node --version
                     npm --version
                     npm install
+                    npm ci # new for practice 10
                     npm run build
                     ls -la
                 '''
@@ -46,8 +47,8 @@ pipeline {
                 '''
             }
         }
-        */
-        stage('Deploy') {
+        
+        stage('Deploy AWS') {
             agent {
                 docker { 
                     //image 'node:22.14.0-alpine' 
@@ -58,7 +59,7 @@ pipeline {
                 }
             }
             environment{
-                AWS_S3_BUCKET = 'temp-20250320'
+                AWS_S3_BUCKET = 'svmy-new-jenkins-20250320'
             }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'my-temp', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
@@ -79,8 +80,8 @@ pipeline {
                   aws --version
                   aws s3 ls
                   echo "Hello S3!" > index.html
-                  aws s3 cp index.html s3://svmy-new-jenkins-20250320/index.html
-                #  aws s3 sync build s3://$AWS_S3_BUCKET
+                 # aws s3 cp index.html s3://svmy-new-jenkins-20250320/index.html
+                   aws s3 sync build s3://$AWS_S3_BUCKET
                 '''
             }
           }
